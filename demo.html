@@ -1,0 +1,94 @@
+<!doctype html>
+
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <title>responsive-carousel demo</title>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="responsive-carousel.js"></script>
+
+  <style>
+    body, html, #demo {
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+    .rcWrapper {
+      position:absolute;
+      top:0; right: 0; bottom: 0; left: 0;
+      width:100%;
+      height:100%;
+      overflow: hidden;
+      z-index:1;
+    }
+    .rcWrapper ul {
+      position:absolute;
+      top:0; right: 0; bottom: 0; left: 0;
+      margin: 0;
+      padding: 0;
+      font-size:0;
+      list-style-type:none;
+      display:inline-block;
+      white-space:nowrap;
+      width:100%;
+      height:100%;
+    }
+
+    .rcWrapper li {
+      position:relative;
+      margin: 0;
+      padding:0;
+      font-size:100px;
+      display:inline-block;
+      width:100%;
+      height:100%;
+      text-align:center;
+      overflow:hidden;
+      background-size: cover;
+      background-position: 20% 50%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- carousel -->
+  <div id="demo">
+    <div class="rcWrapper">
+      <ul>
+        <li style="background-image: url('http://2.bp.blogspot.com/-9FRsl6Fe-7c/TxW1Z71KIEI/AAAAAAAAATs/z0kY0ysfxJk/s1600/montana-scenery.jpg')"></li>
+        <li style="background-image: url('http://www.bilerico.com/2010/04/montana.jpg')"></li>
+        <li style="background-image: url('http://upload.wikimedia.org/wikipedia/commons/3/30/Crans_Montana.jpg')"></li>
+        <li style="background-image: url('http://3.bp.blogspot.com/-135WfPBCQ88/Tvo0m0gzeOI/AAAAAAAANUw/BNeEsIcmOgY/s1600/Hidden_Lake_Vista_Glacier_National_Park_Montana.jpg')"></li>
+        <li style="background-image: url('http://toptravellists.net/wp-content/uploads/2012/03/glacier-national-park-montana-united-states.jpg')"></li>
+        <li style="background-image: url('http://www.walldesk.net/pdp/1024/17/17/Logan-Pass,-Waterton-Glacier-International-Peace-Park,-Alberta,-Canada-Montana-,-U.S.A..jpg')"></li>
+        <li style="background-image: url('http://4.bp.blogspot.com/-Q9axlyhB-WE/TcvZ2nhAZBI/AAAAAAAAAM8/GpiBYio1hog/s1600/montana%252Bmountain.jpg')"></li>
+        <li style="background-image: url('http://www.presidiacreative.com/wp-content/uploads/2009/12/Pass-at-Sunrise-Glacier-National-Park-Montana_68681.jpg')"></li>
+      </ul>
+    </div>
+  </div>
+  <!-- end carousel -->
+
+  <script>
+    $(document).ready(function(){
+      var carousel = $('#demo').responsiveCarousel({
+        direction: 'horizontal',
+        transitionSpeed: 500,
+        keyControl: true,
+        arrows: true,
+        pagination: true,
+        paginationEl: 'paginationList',
+        tapToReturn: true,
+        callback: function() {
+          console.log(this.state.$curPage);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
