@@ -23,7 +23,7 @@
       width:100%;
       height:100%;
       overflow: hidden;
-      z-index:1;
+      z-index: 1;
     }
     .rcWrapper ul {
       position:absolute;
@@ -51,6 +51,56 @@
       background-size: cover;
       background-position: 20% 50%;
     }
+    .rcL, .rcR {
+      position: absolute;
+      top: 50%;
+      margin-top: -20px;
+      display: block;
+      height: 30px;
+      width: 30px;
+      z-index: 2;
+      background-size: cover;
+      background-image: url('arrowWhite.png');
+    }
+    .rcL.rcHide, .rcR.rcHide {
+      display: none;
+    }
+    .rcL {
+      position: absolute;
+      left: 80px;
+    }
+    .rcR {
+      position: absolute;
+      right: 80px;
+      -webkit-transform:rotate(180deg);
+      -moz-transform:rotate(180deg);
+      -ms-transform:rotate(180deg);
+      -o-transform:rotate(180deg);
+      transform:rotate(180deg);
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      height: 80px;
+      width: 100%;
+      text-align: center;
+      z-index:3;
+    }
+    footer ul {
+      padding: 0;
+    }
+    footer ul li {
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+      -webkit-border-radius: 6px;
+      background-color: white;
+      color: transparent;
+      margin: 0 10px;
+    }
+    footer ul li.rcPaginationHot {
+      background-color: #555;
+    }
   </style>
 
 </head>
@@ -61,16 +111,19 @@
   <div id="demo">
     <div class="rcWrapper">
       <ul>
-        <li style="background-image: url('http://2.bp.blogspot.com/-9FRsl6Fe-7c/TxW1Z71KIEI/AAAAAAAAATs/z0kY0ysfxJk/s1600/montana-scenery.jpg')"></li>
+        <li style="background-image: url('http://2.bp.blogspot.com/-9FRsl6Fe-7c/TxW1Z71KIEI/AAAAAAAAATs/z0kY0ysfxJk/s1600/montana-scenery.jpg')" class="dark"></li>
         <li style="background-image: url('http://www.bilerico.com/2010/04/montana.jpg')"></li>
-        <li style="background-image: url('http://upload.wikimedia.org/wikipedia/commons/3/30/Crans_Montana.jpg')"></li>
-        <li style="background-image: url('http://3.bp.blogspot.com/-135WfPBCQ88/Tvo0m0gzeOI/AAAAAAAANUw/BNeEsIcmOgY/s1600/Hidden_Lake_Vista_Glacier_National_Park_Montana.jpg')"></li>
-        <li style="background-image: url('http://toptravellists.net/wp-content/uploads/2012/03/glacier-national-park-montana-united-states.jpg')"></li>
-        <li style="background-image: url('http://www.walldesk.net/pdp/1024/17/17/Logan-Pass,-Waterton-Glacier-International-Peace-Park,-Alberta,-Canada-Montana-,-U.S.A..jpg')"></li>
-        <li style="background-image: url('http://4.bp.blogspot.com/-Q9axlyhB-WE/TcvZ2nhAZBI/AAAAAAAAAM8/GpiBYio1hog/s1600/montana%252Bmountain.jpg')"></li>
+        <li style="background-image: url('http://upload.wikimedia.org/wikipedia/commons/3/30/Crans_Montana.jpg')" class="dark"></li>
+        <li style="background-image: url('http://3.bp.blogspot.com/-135WfPBCQ88/Tvo0m0gzeOI/AAAAAAAANUw/BNeEsIcmOgY/s1600/Hidden_Lake_Vista_Glacier_National_Park_Montana.jpg')" class="dark"></li>
+        <li style="background-image: url('http://toptravellists.net/wp-content/uploads/2012/03/glacier-national-park-montana-united-states.jpg')" class="dark"></li>
+        <li style="background-image: url('http://www.walldesk.net/pdp/1024/17/17/Logan-Pass,-Waterton-Glacier-International-Peace-Park,-Alberta,-Canada-Montana-,-U.S.A..jpg')" class="dark"></li>
+        <li style="background-image: url('http://4.bp.blogspot.com/-Q9axlyhB-WE/TcvZ2nhAZBI/AAAAAAAAAM8/GpiBYio1hog/s1600/montana%252Bmountain.jpg')" class="dark"></li>
         <li style="background-image: url('http://www.presidiacreative.com/wp-content/uploads/2009/12/Pass-at-Sunrise-Glacier-National-Park-Montana_68681.jpg')"></li>
       </ul>
     </div>
+    <footer>
+      <ul class="paginationList"></ul>  
+    </footer>
   </div>
   <!-- end carousel -->
 
@@ -85,7 +138,7 @@
         paginationEl: 'paginationList',
         tapToReturn: true,
         callback: function() {
-          console.log(this.state.$curPage);
+          console.log(this.state);
         }
       });
     });
