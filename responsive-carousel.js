@@ -7,9 +7,9 @@
   var _testTouch = function() {
     if (_hasTouch) return _hasTouch;
     if ('ontouchstart' in window) {
-      return _hasTouch = true;
+      _hasTouch = true;
     } else {
-      return _hasTouch = false;
+      _hasTouch = false;
     }
   };
   
@@ -68,7 +68,7 @@
       that.opts = $.extend({}, that.defaults, that.options);
       
       // declare base DOM elements
-      that.state = {}
+      that.state = {};
       that.$el = $(that.el);
       that.$listWrapper = that.$el.children('.rcWrapper');
       that.$list = that.$listWrapper.children('ul');
@@ -94,24 +94,24 @@
       // init options
       if (that.opts.keyControl) {
         that.keyControl();
-      };
+      }
       if (that.opts.arrows) {
         that.initArrows();
-      };
+      }
       if (that.opts.pagination) {
         that.initPagination();
-      };
+      }
       if (that.opts.hotClass) {
         that.initHotClass();
-      };
+      }
       if (that.opts.tapToReturn) {
         that.initTapToReturn();
-      };
+      }
       
       // init callback if defined as function
       if (that.opts.callback && typeof that.opts.callback == 'function') { // make sure the callback is a function
         that.initCallback();
-      };
+      }
 
       // add resize listener
       $(that).on('resize', that.resizeListener);
@@ -124,7 +124,6 @@
     },
 
     gestureStart: function(e) {
-      var e = e;
       // init new empty gesture object
       // TODO - need to check if gesture is still in progress id: adding second finger etc...
       that.gesture = {};
@@ -160,7 +159,7 @@
         e.preventDefault();
         e.stopPropagation();
         window.removeEventListener("click", preventClickEvents, true);
-      }
+      };
       window.addEventListener("click", preventClickEvents, true);
 
       // grab position variables on move
@@ -175,7 +174,7 @@
         that.$list.css('-webkit-transform', 'translate3d(' + moveX + 'px, 0, 0)');
         return false;
       } else {
-        var rubberedMoveX = that.gesture.xd * .35;
+        var rubberedMoveX = that.gesture.xd * 0.35;
         moveX = that.state.curPageOffset + rubberedMoveX;
         that.$list.css('-webkit-transform', 'translate3d(' + moveX + 'px, 0, 0)');
         return false;
@@ -285,7 +284,7 @@
     showPage: function(page) {
 
       // update state and calculate new offset
-      that.state.curPage = parseInt(page);
+      that.state.curPage = parseInt(page, 10);
       var newOffset = ((that.state.curPage - 1) * that.offsetUnit);
       that.state.$curPage = $(that.$slides[that.state.curPage - 1]);
       that.state.curPageOffset = -newOffset;
@@ -360,9 +359,9 @@
 
       // removes the hide class and adds to left or right as needed
       that.$leftArrow.removeClass('rcHide');
-      that.$rightArrow.removeClass('rcHide')
+      that.$rightArrow.removeClass('rcHide');
       if (that.state.curPage == 1) {
-        that.$leftArrow.addClass('rcHide')
+        that.$leftArrow.addClass('rcHide');
       } else if (that.state.curPage == that.totalPages){
         that.$rightArrow.addClass('rcHide');
       }
@@ -379,7 +378,7 @@
       for (i = 0; i < that.totalPages; i++) {
         paginationHTML += '<li>' + _i + '</li>';
         _i++;
-      };
+      }
       that.$paginationEl.append(paginationHTML);
       
       // bind pagination change to page change
@@ -408,12 +407,12 @@
         that.opts.callback.call(that);
       });
     }
-  }
+  };
 
   ResponsiveCarousel.defaults = ResponsiveCarousel.prototype.defaults;
 
   $.fn.responsiveCarousel = function(options, callback) {
-    var callback = callback ? callback : null;
+    callback = callback ? callback : null;
     return new ResponsiveCarousel(this, options, callback).init();
   };
 
