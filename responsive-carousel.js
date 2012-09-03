@@ -114,11 +114,11 @@
       }
 
       // add resize listener
-      $(that).on('resize', that.resizeListener);
+      $(window).on('resize', that.resizeListener);
       
       // trigger a pageChange event to initiate things like arrows and pagination
       that.$el.trigger('rcPageChange');
-      $(that).trigger('resize');
+      $(window).trigger('resize');
 
       return that;
     },
