@@ -3,13 +3,15 @@
   //
   // init base gesture names based on whether device supports touch or not
   //
-  var _hasTouch;
+  var _hasTouch = false;
   var _testTouch = function() {
-    if (_hasTouch) return _hasTouch;
+    if (_hasTouch) {
+      return _hasTouch;
+    }
     if ('ontouchstart' in window) {
-      _hasTouch = true;
+      return _hasTouch = true;
     } else {
-      _hasTouch = false;
+      return _hasTouch = false;
     }
   };
   
@@ -189,7 +191,7 @@
       that.$list.off(that._gestures.end, that.gestureEnd);
       $('body').off('mouseleave');
       
-      if ((that.gesture.endTime - that.gesture.startTime) > 150 || ((that.gesture.endTime - that.gesture.startTime) <= 150 && Math.abs(that.gesture.xd) >= 2)) {
+      if (Math.abs(that.gesture.xd) >= 10) {
         e.originalEvent.preventDefault();
         e.preventDefault();
         
@@ -200,10 +202,13 @@
         } else {
           that.swipeReturn();
         }
+        return false;
       } else {
-        that.originalTarget.trigger('click');
+        var el = $(e.originalEvent.target).get(0);
+        var evt = document.createEvent("MouseEvents");
+        evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        el.dispatchEvent(evt);
       }
-      return false;
     },
 
     swipeRight: function() {
@@ -233,7 +238,7 @@
       if (that.state.curPage > 1) {
         return that.showPrev();
       } else {
-        console.log('cant go left');
+        // console.log('cant go left');
       }
     },
     
@@ -241,7 +246,7 @@
       if (that.state.curPage < that.totalPages) {
         return that.showNext();
       } else {
-        console.log('cant go right');
+        // console.log('cant go right');
       }
     },
     
@@ -307,13 +312,13 @@
             that.ifPrev();
           break;
           case arrow.up:
-            console.log('no function bound to key arrow up');
+            // console.log('no function bound to key arrow up');
           break;
           case arrow.right:
             that.ifNext();
           break;
           case arrow.down:
-            console.log('no function bound to key arrow down');
+            // console.log('no function bound to key arrow down');
           break;
         }
       });
