@@ -36,11 +36,66 @@
     }
   };
 
+  var _cssType = function() {
+    $body = document.getElementsByTagName('body')[0]
+
+    if ($body.style.webkitTransform != undefined) {
+      return 'webkit';
+    } else if ($body.style.MozTransform != undefined) {
+      return 'moz';
+    } else if ($body.style.msTransform != undefined) {
+      return 'ms';
+    } else if ($body.style.OTransform != undefined) {
+      return 'o';
+    }
+  };
+
+  var _css = function(){
+
+    var cssType = _cssType();
+
+    switch (cssType) {
+      case 'webkit':
+        console.log('webkit');
+        return {
+          transition: '-webkit-transition',
+          transform: '-webkit-transform',
+          translate3d: 'translate3d'
+        };
+      break;
+      case 'moz':
+        console.log('moz');
+        return {
+          transition: '-moz-transition',
+          transform: '-moz-transform',
+          translate: 'translate'
+        };
+      break;
+      case 'ms':
+        console.log('ms');
+        return {
+          transition: '-ms-transition',
+          transform: '-ms-transform',
+          translate: 'translate'
+        };
+      break;
+      case 'ms':
+        console.log('0');
+        return {
+          transition: '-o-transition',
+          transform: '-o-transform',
+          translate: 'translate'
+        };
+      break;
+    }
+  };
+
   var that = {};
 
   // our plugin constructor
   var ResponsiveCarousel = function(el, options){
       this._gestures = _gestures();
+      this._css = _css();
       this.el = el;
       this.options = options;
       
@@ -88,7 +143,7 @@
       
       // set webkit transition on ul
       // TODO - probably dont' need to do that
-      that.$list.css('-webkit-transition', '-webkit-transform .6s ease');
+      that.$list.css(that._css.transition, that._css.transform + ' .6s ease');
       
       // init start gesture listener
       that.$list.on(that._gestures.start, that.gestureStart);
@@ -169,16 +224,16 @@
       that.gesture.lastY = (e.originalEvent instanceof MouseEvent) ? e.clientY : e.originalEvent.touches[0].pageY;
       that.gesture.xd = that.gesture.lastX - that.gesture.xstart; // x delta
       
-      that.$list.css('-webkit-transition', 'none');
+      that.$list.css(that._css.transition, 'none');
 
       if (!(that.state.curPage == 1 && that.gesture.xd > 0) && !(that.state.curPage == that.totalPages && that.gesture.xd < 0)) {
         moveX = that.state.curPageOffset + that.gesture.xd;
-        that.$list.css('-webkit-transform', 'translate3d(' + moveX + 'px, 0, 0)');
+        that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(' + moveX + 'px, 0, 0)' : that._css.translate + '(' + moveX + 'px, 0)');
         return false;
       } else {
         var rubberedMoveX = that.gesture.xd * 0.35;
         moveX = that.state.curPageOffset + rubberedMoveX;
-        that.$list.css('-webkit-transform', 'translate3d(' + moveX + 'px, 0, 0)');
+        that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(' + moveX + 'px, 0, 0)' : that._css.translate + '(' + moveX + 'px, 0)');
         return false;
       }
     },
@@ -215,8 +270,10 @@
       if (that.state.curPage < that.totalPages) {
         that.showNext();
       } else {
-        that.$list.css('-webkit-transition', '-webkit-transform .4s ease');
-        that.$list.css('-webkit-transform', 'translate3d(' + that.state.curPageOffset + 'px, 0, 0)');
+        // that.$list.css('-webkit-transition', '-webkit-transform .4s ease');
+        that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
+        // that.$list.css('-webkit-transform', 'translate3d(' + that.state.curPageOffset + 'px, 0, 0)');
+        that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(' + that.state.curPageOffset + 'px, 0, 0)' : that._css.translate + '(' + that.state.curPageOffset + 'px, 0)')
       }
     },
 
@@ -224,14 +281,14 @@
       if (that.state.curPage > 1) {
         that.showPrev();
       } else {
-        that.$list.css('-webkit-transition', '-webkit-transform .4s ease');
-        that.$list.css('-webkit-transform', 'translate3d(0, 0, 0)');
+        that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
+        that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(0, 0, 0)' : that._css.translate + '(0, 0)');
       }
     },
     
     swipeReturn: function() {
-      that.$list.css('-webkit-transition', '-webkit-transform .4s ease');
-      that.$list.css('-webkit-transform', 'translate3d(' + that.state.curPageOffset + 'px, 0, 0)');
+      that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
+      that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(' + that.state.curPageOffset + 'px, 0, 0)' : that._css.translate + '(' + that.state.curPageOffset + 'px, 0)')
     },
     
     ifPrev: function() {
@@ -251,8 +308,8 @@
     },
     
     showFirst: function() {
-      that.$list.css('-webkit-transition', '-webkit-transform 1.4s ease');
-      that.$list.css('-webkit-transform', 'translate3d(0, 0, 0)');
+      that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
+      that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(0, 0, 0)' : that._css.translate + '(0, 0)');
       that.state.curPage = 1;
       that.state.$curPage = $(that.$slides[0]);
       that.state.curPageOffset = 0;
@@ -263,8 +320,8 @@
     
     showNext: function() {
       var newOffset = (that.state.curPage * that.offsetUnit);
-      that.$list.css('-webkit-transition', '-webkit-transform .4s ease');
-      that.$list.css('-webkit-transform', 'translate3d(-' + newOffset + 'px, 0, 0)');
+      that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
+      that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(-' + newOffset + 'px, 0, 0)' : that._css.translate + '(-' + newOffset + 'px, 0)');
       that.state.curPage++;
       that.state.$curPage = $(that.$slides[that.state.curPage - 1]);
       that.state.curPageOffset = -newOffset;
@@ -275,8 +332,8 @@
 
     showPrev: function() {
       var newOffset = ((that.state.curPage - 2) * that.offsetUnit);
-      that.$list.css('-webkit-transition', '-webkit-transform .4s ease');
-      that.$list.css('-webkit-transform', 'translate3d(-' + newOffset + 'px, 0, 0)');
+      that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
+      that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(-' + newOffset + 'px, 0, 0)' : that._css.translate + '(-' + newOffset + 'px, 0)');
       that.state.curPage--;
       that.state.$curPage = $(that.$slides[that.state.curPage - 1]);
       that.state.curPageOffset = -newOffset;
@@ -295,8 +352,8 @@
       that.state.curPageOffset = -newOffset;
 
       // apply the animation
-      that.$list.css('-webkit-transition', '-webkit-transform 0s ease');
-      that.$list.css('-webkit-transform', 'translate3d(-' + newOffset + 'px, 0, 0)');
+      that.$list.css(that._css.transition, that._css.transform + ' 0s ease');
+      that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(-' + newOffset + 'px, 0, 0)' : that._css.translate + '(-' + newOffset + 'px, 0)');
 
       // trigger custom page change event on the main $el
       that.$el.trigger('rcPageChange');
@@ -332,7 +389,7 @@
       
       // reset translated position
       var newOffset = ((that.state.curPage - 1) * that.offsetUnit);
-      that.$list.css('-webkit-transition', '-webkit-transform 0 ease');
+      that.$list.css(that._css.transition, that._css.transform + ' 0 ease');
       that.$list.css('-webkit-transform', 'translate3d(-' + newOffset + 'px, 0, 0)');
     },
     
