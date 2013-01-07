@@ -1,3 +1,14 @@
+/*
+ * responsive-carousel.js - 2013-01-27
+ * https://github.com/jerometufte/responsive-carousel
+ *
+ * Copyright (c) 2011 Jerome Tufte
+ * http://jerometufte.me
+ *
+ * Licensed under the MIT License.
+ */
+
+
 ;(function( $, window, document, undefined ){
 
   //
@@ -14,7 +25,7 @@
       return _hasTouch = false;
     }
   };
-  
+
   //
   // define basic gesture names depending on device
   //
@@ -98,7 +109,7 @@
       this._css = _css();
       this.el = el;
       this.options = options;
-      
+
       // bind all prototype functions to this object
       that = this;
 
@@ -123,14 +134,14 @@
       // Introduce defaults that can be extended either
       // globally or using an object literal.
       that.opts = $.extend({}, that.defaults, that.options);
-      
+
       // declare base DOM elements
       that.state = {};
       that.$el = $(that.el);
       that.$listWrapper = that.$el.children('.rcWrapper');
       that.$list = that.$listWrapper.children('ul');
       that.$slides = that.$list.children('li');
-      
+
       // declare base calculation variables
       that.offsetUnit = that.$listWrapper.width();
       that.slidesPerPage = Math.round(that.offsetUnit / $(that.$slides[0]).width());
@@ -140,14 +151,14 @@
       that.state.curPage = 1;
       that.state.$curPage = $(that.$slides[0]);
       that.state.curPageOffset = 0;
-      
+
       // set webkit transition on ul
       // TODO - probably dont' need to do that
       that.$list.css(that._css.transition, that._css.transform + ' .6s ease');
-      
+
       // init start gesture listener
       that.$list.on(that._gestures.start, that.gestureStart);
-      
+
       // init options
       if (that.opts.keyControl) {
         that.keyControl();
@@ -164,7 +175,7 @@
       if (that.opts.tapToReturn) {
         that.initTapToReturn();
       }
-      
+
       // init callback if defined as function
       if (that.opts.callback && typeof that.opts.callback == 'function') { // make sure the callback is a function
         that.initCallback();
@@ -172,7 +183,7 @@
 
       // add resize listener
       $(window).on('resize', that.resizeListener);
-      
+
       // trigger a pageChange event to initiate things like arrows and pagination
       that.$el.trigger('rcPageChange');
       $(window).trigger('resize');
@@ -187,19 +198,19 @@
       that.gesture.startTime = new Date();
       that.gesture.xstart = (e.originalEvent instanceof MouseEvent) ? e.clientX : e.originalEvent.touches[0].pageX;
       that.gesture.ystart = (e.originalEvent instanceof MouseEvent) ? e.clientY : e.originalEvent.touches[0].pageY;
-      
+
       that.originalTarget = $(e.originalEvent.target);
-      
+
       // add move and end listeners
       that.$list.on(that._gestures.move, that.gestureMove);
       that.$list.on(that._gestures.end, that.gestureEnd);
-      
+
       // add a mouseout listener if event is mouse
       // that is necessary cuz to close gesture when leaving window
       if (e.originalEvent instanceof MouseEvent) {
         $('body').on('mouseleave', that.gestureEnd);
       }
-      
+
       return false;
     },
 
@@ -210,7 +221,7 @@
       e.originalEvent.stopPropagation();
       e.preventDefault();
       e.stopPropagation();
-      
+
       // Prevent click events
       var preventClickEvents = function(e) {
         e.preventDefault();
@@ -223,7 +234,7 @@
       that.gesture.lastX = (e.originalEvent instanceof MouseEvent) ? e.clientX : e.originalEvent.touches[0].pageX;
       that.gesture.lastY = (e.originalEvent instanceof MouseEvent) ? e.clientY : e.originalEvent.touches[0].pageY;
       that.gesture.xd = that.gesture.lastX - that.gesture.xstart; // x delta
-      
+
       that.$list.css(that._css.transition, 'none');
 
       if (!(that.state.curPage == 1 && that.gesture.xd > 0) && !(that.state.curPage == that.totalPages && that.gesture.xd < 0)) {
@@ -237,19 +248,19 @@
         return false;
       }
     },
-    
+
     gestureEnd: function(e) {
       that.gesture.endTime = new Date();
-      
+
       // remove move and end listeners
       that.$list.off(that._gestures.move, that.gestureMove);
       that.$list.off(that._gestures.end, that.gestureEnd);
       $('body').off('mouseleave');
-      
+
       if (Math.abs(that.gesture.xd) >= 10) {
         e.originalEvent.preventDefault();
         e.preventDefault();
-        
+
         if (that.gesture.lastX < (that.gesture.xstart - 40)) {
           that.swipeRight();
         } else if (that.gesture.lastX > (that.gesture.xstart + 40)) {
@@ -285,12 +296,12 @@
         that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(0, 0, 0)' : that._css.translate + '(0, 0)');
       }
     },
-    
+
     swipeReturn: function() {
       that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
       that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(' + that.state.curPageOffset + 'px, 0, 0)' : that._css.translate + '(' + that.state.curPageOffset + 'px, 0)')
     },
-    
+
     ifPrev: function() {
       if (that.state.curPage > 1) {
         return that.showPrev();
@@ -298,7 +309,7 @@
         // console.log('cant go left');
       }
     },
-    
+
     ifNext: function() {
       if (that.state.curPage < that.totalPages) {
         return that.showNext();
@@ -306,18 +317,18 @@
         // console.log('cant go right');
       }
     },
-    
+
     showFirst: function() {
       that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
       that.$list.css(that._css.transform, that._css.translate3d ? that._css.translate3d + '(0, 0, 0)' : that._css.translate + '(0, 0)');
       that.state.curPage = 1;
       that.state.$curPage = $(that.$slides[0]);
       that.state.curPageOffset = 0;
-      
+
       // trigger custom page change event on the main $el
       that.$el.trigger('rcPageChange');
     },
-    
+
     showNext: function() {
       var newOffset = (that.state.curPage * that.offsetUnit);
       that.$list.css(that._css.transition, that._css.transform + ' .4s ease');
@@ -358,7 +369,7 @@
       // trigger custom page change event on the main $el
       that.$el.trigger('rcPageChange');
     },
-    
+
     keyControl: function() {
       $(document).keydown(function (e) {
         var keyCode = e.keyCode || e.which,
@@ -380,19 +391,19 @@
         }
       });
     },
-    
+
     reload: function() {
       // reset the variables that determine swipe size and number of items per page
       that.offsetUnit = that.$listWrapper.width();
       that.slidesPerPage = Math.round(that.offsetUnit / that.$list.children(":first").width());
       that.totalPages = that.$slides.length / that.slidesPerPage;
-      
+
       // reset translated position
       var newOffset = ((that.state.curPage - 1) * that.offsetUnit);
       that.$list.css(that._css.transition, that._css.transform + ' 0 ease');
       that.$list.css('-webkit-transform', 'translate3d(-' + newOffset + 'px, 0, 0)');
     },
-    
+
     resizeListener: function() {
       if (that.resizeTimer) {
           clearTimeout(that.resizeTimer);
@@ -401,22 +412,22 @@
           that.reload();
       }, 100);
     },
-    
+
     initArrows: function() {
       // build arrows, prepend and append to $el, siblings of rcWrapper
       that.$leftArrow = $('<div/>').addClass('rcL').addClass('rcHide').prependTo(that.$el);
       that.$rightArrow = $('<div/>').addClass('rcR').addClass('rcHide').appendTo(that.$el);
-      
+
       // add listeners for the function that looks for page and animates if possible
       that.$leftArrow.on('click', that.ifPrev);
       that.$rightArrow.on('click', that.ifNext);
-      
+
       // bind arrows toggle to page change
       that.$el.on('rcPageChange', function(){
         that.toggleArrows(that);
       });
     },
-    
+
     toggleArrows: function(that) {
 
       // removes the hide class and adds to left or right as needed
@@ -428,41 +439,41 @@
         that.$rightArrow.addClass('rcHide');
       }
     },
-    
+
     initPagination: function() {
       var paginationHTML;
       var _i;
       that.$paginationEl = $('.' + that.opts.paginationEl);
       paginationHTML = '';
       _i = 1;
-      
+
       // build li's and populate the pagination holder
       for (i = 0; i < that.totalPages; i++) {
         paginationHTML += '<li>' + _i + '</li>';
         _i++;
       }
       that.$paginationEl.append(paginationHTML);
-      
+
       // bind pagination change to page change
       that.$el.on('rcPageChange', function(){
         that.$paginationEl.children('li').removeClass('rcPaginationHot');
         that.$paginationEl.children('li:nth-child(' + that.state.curPage + ')').addClass('rcPaginationHot');
       });
     },
-    
+
     initHotClass: function() {
       that.$el.on('rcPageChange', function(){
         that.$slides.removeClass('rcPageHot');
         that.state.$curPage.addClass('rcPageHot');
       });
     },
-    
+
     initTapToReturn: function() {
       that.$el.on('click', '.rcReturn', function() {
         that.showFirst();
       });
     },
-    
+
     // call the callback function and pass it the state object
     initCallback: function() {
       that.$el.on('rcPageChange', function(){
