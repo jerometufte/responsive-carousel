@@ -283,6 +283,7 @@ body, html, #wrapper {
   margin: 0;
   padding: 0;
   font-family: futura;
+  background-color: #eeeeee;
 }
 
 #header {
@@ -388,6 +389,9 @@ body, html, #wrapper {
 #main-intro .me {
   font-size: 32px;
 }
+#two {
+  background-color: #ffffff;
+}
 #description {
   height: 420px;
   margin-top: -210px;
@@ -399,10 +403,10 @@ body, html, #wrapper {
   color: #555555;
 }
 #description .description {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 200;
-  color: #555555;
-  max-width: 800px;
+  color: #777777;
+  max-width: 700px;
   white-space: normal;
   margin: 0 auto;
 }
@@ -481,9 +485,11 @@ footer ul {
 }
 footer ul li {
   display: inline-block;
-  height: 12px;
-  width: 12px;
-  -webkit-border-radius: 6px;
+  height: 10px;
+  width: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   background-color: rgba(240,240,240,.5);
   color: transparent;
   margin: 0 10px;
