@@ -395,12 +395,13 @@ body, html, #wrapper {
   text-align: center;
 }
 #description .slide-head {
-  margin-top: 20px;
+  margin: 20px auto;
   font-size: 40px;
   font-weight: 700;
   color: #555555;
 }
 #description .description {
+  font-family: "ff-din-web", helvetica neue, sans-serif;
   font-size: 17px;
   line-height: 27px;
   font-weight: 200;
