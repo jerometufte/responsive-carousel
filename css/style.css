@@ -227,24 +227,21 @@ figure {
   text-align: center;
   color: #999999;
   cursor: pointer;
-  border: 2px solid #bbbbbb;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 .btn-git:hover {
   background-color: #f6f6f6;
   color: #666666;
-  border-color: #999999;
 }
 .dark .btn-git {
   color: rgba(255,255,255,.8);
-  border-color: rgba(255,255,255,0);
   background-color: rgba(0,0,0,.05);
 }
 .dark .btn-git:hover {
   color: rgba(255,255,255,1);
-  border-color: rgba(0,0,0,0);
   background-color: rgba(0,0,0,.2);
 }
 .slide-center {
@@ -398,24 +395,27 @@ body, html, #wrapper {
   text-align: center;
 }
 #description .slide-head {
+  margin-top: 20px;
   font-size: 40px;
   font-weight: 700;
   color: #555555;
 }
 #description .description {
   font-size: 17px;
+  line-height: 27px;
   font-weight: 200;
   color: #777777;
-  max-width: 700px;
+  max-width: 540px;
   white-space: normal;
   margin: 0 auto;
 }
 #three {
-  background-color: #555555;
+  background-color: #444444;
 }
 #howto {
   height: 800px;
   margin-top: -400px;
+  padding-top: 40px;
   text-align: center;
   white-space: normal;
 }
@@ -425,10 +425,11 @@ body, html, #wrapper {
   font-weight: 700;
 }
 #howto .description {
-  font-size: 20px;
+  font-size: 17px;
+  line-height: 27px;
   font-weight: 200;
-  color: #555555;
-  max-width: 600px;
+  color: #777777;
+  max-width: 520px;
   white-space: normal;
   margin: 0 auto;
 }
@@ -450,7 +451,7 @@ body, html, #wrapper {
   font-family: helvetica neue;
   font-size: 18px;
   color: #dddddd;
-  padding:30px;
+  padding: 20px 30px;
   width: 600px;
   margin: 0 auto;
   background-color: rgba(255,255,255,.2);

@@ -24,7 +24,7 @@
         <li id="one" class="dark">
           <section id="main-intro" class="slide-center">
             <h1 class="title logo-light"></h1>
-            <div class="btn-git light">view on GitHub</div>
+            <a class="btn-git light" href="https://github.com/jerometufte/responsive-carousel">view on GitHub</a>
           </section>
         </li>
         <li id="two">
@@ -38,13 +38,15 @@
         </li>
         <li id="three" class="dark">
           <section id="howto" class="slide-center">
-            <h3 class="howto-label">Initialize</h3>
-            <div class="howto-step">
-              <div class="code">$('#carousel-container').responsiveCarousel();</div>
-            </div>
-            <h3 class="howto-label">Customize</h3>
             <div class="howto-step">
               <div class="code">
+                // initialize<br/>
+                $('#carousel-container').responsiveCarousel();
+              </div>
+            </div>
+            <div class="howto-step">
+              <div class="code">
+                // customize<br/>
                 var carousel = $('#wrapper').responsiveCarousel({<br/>
                   &nbsp; &nbsp; direction: 'horizontal',<br/>
                   &nbsp; &nbsp; transitionSpeed: 500,<br/>
@@ -59,16 +61,18 @@
                 });
               </div>
             </div>
-            <h3 class="howto-label">Destroy</h3>
             <div class="howto-step">
-              <div class="code"></div>
+              <div class="code">
+                // destroy<br/>
+                carousel.destroy();
+              </div>
             </div>
           </section>
         </li>
         <li id="four" class="dark">
           <section id="last" class="slide-center">
             <h1 class="title logo-light"></h1>
-            <div class="btn-git light">view on GitHub</div>
+            <a class="btn-git light" href="https://github.com/jerometufte/responsive-carousel">view on GitHub</a>
           </section>
         </li>
       </ul>
