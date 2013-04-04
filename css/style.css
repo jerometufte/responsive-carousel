@@ -249,8 +249,8 @@ figure {
   top: 50%; right: 0; bottom: 0; left: 0;
 }
 .title {
-  width: 800px;
-  height: 150px;
+  width: 600px;
+  height: 100px;
   margin: 0 auto;
 }
 .icon-responsive {
@@ -258,7 +258,7 @@ figure {
   background-size: 420px 140px;
   height: 140px;
   width: 140px;
-  margin: 0;
+  margin: 0 6px;
   display: inline-block;
 }
 .icon-touch {
@@ -269,6 +269,12 @@ figure {
 }
 .icon-mouse {
   background-position: -140px 0;
+}
+.icon-swipe {
+
+}
+.icon-swipe-l {
+  transform: rotate(180deg);
 }
 
 /* main elements */
@@ -281,24 +287,6 @@ body, html, #wrapper {
   padding: 0;
   font-family: "futura-pt",sans-serif;
   background-color: #eeeeee;
-}
-
-#header {
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 60px;
-  z-index: 1000;
-}
-#header .header-logo {
-  width: 220px;
-  height: 60px;
-  margin-top: 16px;
-  margin-left: 30px;
-  float: left;
-}
-#header .btn-git {
-  float: right;
-  margin: 20px 30px 0 0;
 }
 .rcWrapper {
   position:absolute;
@@ -335,56 +323,68 @@ body, html, #wrapper {
 }
 .rcL, .rcR {
   position: absolute;
-  top: 50%;
-  margin-top: -20px;
+  bottom: 0;
+  margin-bottom: 34px;
   display: block;
-  height: 30px;
-  width: 30px;
   z-index: 2;
-  background-size: cover;
-  background-image: url('demo/arrowWhite.png');
+  background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PGcgZmlsbD0iI0VCRUJFQiI+PHBvbHlnb24gcG9pbnRzPSIyLjk2NiwwIDAsMi45NjYgNy4wMTUsOS45ODMgMCwxNi45OTcgMi45NjYsMTkuOTYyIDEyLjk0OCw5Ljk4MyIvPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAyLDAgMTIuMDM2LDIuOTY2IDE5LjA1MSw5Ljk4MyAxMi4wMzYsMTYuOTk3IDE1LjAwMiwxOS45NjIgMjQuOTg0LDkuOTgzIi8+PC9nPjwvc3ZnPgo=");
+  background-size: 25px 20px;
+  background-repeat: no-repeat;
+  background-position: 5px 8px;
+  width: 40px;
+  height: 40px;
+  opacity: .8;
+  -webkit-transition: opacity .5s ease;
+  cursor: pointer;
+  z-index: 4;
 }
-.rcL.rcHide, .rcR.rcHide {
-  display: none;
+.rcL:hover, .rcR:hover {
+  opacity: 1;
+}
+#wrapper .rcL.rcHide, #wrapper .rcR.rcHide {
+  opacity: 0;
+}
+.rcL.rcHide:hover, .rcR.rcHide:hover {
+  opacity: 0;
 }
 .rcL {
   position: absolute;
-  left: 80px;
-}
-.rcR {
-  position: absolute;
-  right: 80px;
+  left: 40px;
   -webkit-transform:rotate(180deg);
   -moz-transform:rotate(180deg);
   -ms-transform:rotate(180deg);
   -o-transform:rotate(180deg);
   transform:rotate(180deg);
 }
+.rcR {
+  position: absolute;
+  right: 40px;
+}
+.darkSlide .rcL, .darkSlide .rcR {
+    opacity: .5;
+}
 #one {
-  /*background-color: rgb(101, 235, 149);*/
-  /*background-color: rgb(85, 206, 128);*/
   background-color: rgb(79, 213, 138);
   z-index: 1001;
 }
 #main-intro {
-  margin-top: -150px;
-  height: 300px;
+  margin-top: -200px;
+  height: 380px;
   font-family: "futura-pt", helvetica neue, helvetica, arial;
   color: white;
   font-size: 45px;
   font-weight: 700;
   text-align: center;
 }
-#main-intro .btn-git {
+#main-intro .title {
   margin-top: 20px;
 }
-#main-intro .by {
-  font-weight: 400;
-  font-size: 22px;
-  margin-bottom: 60px;
+.logo-img {
+  height: 129px;
+  width: 129px;
 }
-#main-intro .me {
-  font-size: 32px;
+#main-intro .btn-git {
+  margin-top: 20px;
 }
 #two {
   background-color: #ffffff;
@@ -455,9 +455,31 @@ body, html, #wrapper {
   padding: 20px 30px;
   width: 600px;
   margin: 0 auto;
-  background-color: rgba(255,255,255,.2);
 }
+
 #four {
+  background-color: white;
+}
+#examples {
+  height: 600px;
+  margin-top: -300px;
+}
+#examples .slide-head {
+  margin: 20px auto;
+  font-size: 40px;
+  font-weight: 700;
+  color: #555555;
+}
+#examples .examples-list {
+  position: relative;
+}
+#examples .examples-list li {
+  display: block;
+  height: 60px;
+  font-size: 26px;
+}
+
+#five {
   background-image: url('./../img/buffalo2.jpg');
   background-size: cover;
   background-position: 100% 50%;
@@ -492,7 +514,7 @@ footer ul li {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  background-color: rgba(240,240,240,.5);
+  background-color: rgba(240,240,240,.8);
   color: transparent;
   margin: 0 10px;
 }

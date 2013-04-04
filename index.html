@@ -23,8 +23,9 @@
       <ul>
         <li id="one" class="dark">
           <section id="main-intro" class="slide-center">
+            <img src="img/jeromicon@2x.png" class="logo-img"/>
             <h1 class="title logo-light"></h1>
-            <a class="btn-git light" href="https://github.com/jerometufte/responsive-carousel">view on GitHub</a>
+            <a class="btn-git light" href="https://github.com/jerometufte/responsive-carousel">View on GitHub</a>
           </section>
         </li>
         <li id="two">
@@ -46,19 +47,20 @@
             </div>
             <div class="howto-step">
               <div class="code">
-                // customize<br/>
-                var carousel = $('#wrapper').responsiveCarousel({<br/>
-                  &nbsp; &nbsp; direction: 'horizontal',<br/>
-                  &nbsp; &nbsp; transitionSpeed: 500,<br/>
-                  &nbsp; &nbsp; keyControl: true,<br/>
-                  &nbsp; &nbsp; arrows: true,<br/>
-                  &nbsp; &nbsp; pagination: true,<br/>
-                  &nbsp; &nbsp; paginationEl: 'paginationList',<br/>
-                  &nbsp; &nbsp; tapToReturn: true,<br/>
-                  &nbsp; &nbsp; callback: function() {<br/>
-                  &nbsp; &nbsp; &nbsp; &nbsp;   console.log(this.state);<br/>
-                  &nbsp; &nbsp; }<br/>
-                });
+                <div class="highlight"><pre><span class="o">//</span> <span class="n">customize</span>
+                <span class="n">var</span> <span class="n">carousel</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s">&#39;#wrapper&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">responsiveCarousel</span><span class="p">({</span>
+                  <span class="n">direction</span><span class="p">:</span> <span class="s">&#39;horizontal&#39;</span><span class="p">,</span>
+                  <span class="n">transitionSpeed</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+                  <span class="n">keyControl</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                  <span class="n">arrows</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                  <span class="n">pagination</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                  <span class="n">paginationEl</span><span class="p">:</span> <span class="s">&#39;paginationList&#39;</span><span class="p">,</span>
+                  <span class="n">tapToReturn</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                  <span class="n">callback</span><span class="p">:</span> <span class="n">function</span><span class="p">()</span>
+                    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">state</span><span class="p">);</span>
+                  <span class="p">}</span>
+                <span class="p">});</span>
+                </pre></div>
               </div>
             </div>
             <div class="howto-step">
@@ -69,10 +71,18 @@
             </div>
           </section>
         </li>
-        <li id="four" class="dark">
+        <li id="four">
+          <section id="examples" class="slide-center">
+            <h2 class="slide-head">Examples</h2>
+            <ul class="examples-list">
+              <li class="example1">example 1</li>
+              <li class="example2">example 2</li>
+            </ul>
+          </section>
+        </li>
+        <li id="five" class="dark">
           <section id="last" class="slide-center">
-            <h1 class="title logo-light"></h1>
-            <a class="btn-git light" href="https://github.com/jerometufte/responsive-carousel">view on GitHub</a>
+            <a class="btn-git light" href="https://github.com/jerometufte/responsive-carousel">View on GitHub</a>
           </section>
         </li>
       </ul>
@@ -93,17 +103,13 @@
         paginationEl: 'paginationList',
         tapToReturn: true,
         callback: function() {
-          console.log(this.state);
+          if (this.state.$curPage.hasClass('dark')) {
+            $('#wrapper').addClass('darkSlide');
+          } else {
+            $('#wrapper').removeClass('darkSlide');
+          };
         }
       });
-      // $('#one').animate({ backgroundColor: "rgb(102, 204, 126)" }, 10000)
-      //   .animate({ backgroundColor: "rgb(238, 135, 77)" }, 10000)
-      //   .animate({ backgroundColor: "rgb(96, 96, 153)" }, 10000);
-      // setInterval(function(){
-      //   $('#one').animate({ backgroundColor: "rgb(102, 204, 126)" }, 10000)
-      //     .animate({ backgroundColor: "rgb(238, 135, 77)" }, 10000)
-      //     .animate({ backgroundColor: "rgb(96, 96, 153)" }, 10000);
-      // }, 30000);
     });
   </script>
 </body>
