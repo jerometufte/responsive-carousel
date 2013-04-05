@@ -79,7 +79,7 @@
   // apply event listeners to info toggle
   Portfolio.initInfo = function () {
     var _this = this;
-    
+
     // apply fast click to toggle
     this.$info.fastClick(function(){
       var overlayOpen = _this.$infoOverlay.hasClass('infoOpen');

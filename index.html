@@ -39,35 +39,38 @@
         </li>
         <li id="three" class="dark">
           <section id="howto" class="slide-center">
+            <h3 id="how-to-header">How To</h3>
             <div class="howto-step">
               <div class="code">
-                // initialize<br/>
-                $('#carousel-container').responsiveCarousel();
-              </div>
-            </div>
-            <div class="howto-step">
-              <div class="code">
-                <div class="highlight"><pre><span class="o">//</span> <span class="n">customize</span>
-                <span class="n">var</span> <span class="n">carousel</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s">&#39;#wrapper&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">responsiveCarousel</span><span class="p">({</span>
-                  <span class="n">direction</span><span class="p">:</span> <span class="s">&#39;horizontal&#39;</span><span class="p">,</span>
-                  <span class="n">transitionSpeed</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-                  <span class="n">keyControl</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                  <span class="n">arrows</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                  <span class="n">pagination</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                  <span class="n">paginationEl</span><span class="p">:</span> <span class="s">&#39;paginationList&#39;</span><span class="p">,</span>
-                  <span class="n">tapToReturn</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-                  <span class="n">callback</span><span class="p">:</span> <span class="n">function</span><span class="p">()</span>
-                    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">state</span><span class="p">);</span>
-                  <span class="p">}</span>
-                <span class="p">});</span>
-                </pre></div>
-              </div>
-            </div>
-            <div class="howto-step">
-              <div class="code">
-                // destroy<br/>
-                carousel.destroy();
-              </div>
+<!-- <pre><span class="comm">/* HOW TO */</span> -->
+</pre>
+
+<pre><span class="comm">&lt;!-- markup --&gt;</span>
+<span class="div">&lt;</span><span class="el">div</span> <span class="attr">id</span>=<span class="s">"container"</span><span class="div">&gt;</span>
+    <span class="div">&lt;</span><span class="el">div</span> <span class="attr">class</span>=<span class="s">"rcWrapper"</span><span class="div">&gt;</span>
+        <span class="div">&lt;</span><span class="el">ul</span> <span class="attr">class</span>=<span class="s">"list"</span><span class="div">&gt;</span>
+            <span class="div">&lt;</span><span class="el">li</span><span class="div">&gt;</span>slide 1 markup<span class="div">&lt;</span><span class="el">/li</span><span class="div">&gt;</span>
+            <span class="div">&lt;</span><span class="el">li</span><span class="div">&gt;</span>slide 2 markup<span class="div">&lt;</span><span class="el">/li</span><span class="div">&gt;</span>
+            <span class="div">&lt;</span><span class="el">li</span><span class="div">&gt;</span>slide 3 markup<span class="div">&lt;</span><span class="el">/li</span><span class="div">&gt;</span>
+        <span class="div">&lt;</span><span class="el">/ul</span><span class="div">&gt;</span>
+    <span class="div">&lt;</span><span class="el">/div</span><span class="div">&gt;</span>
+<span class="div">&lt;</span><span class="el">/div</span><span class="div">&gt;</span>
+</pre>
+
+<pre><span class="comm">//</span> <span class="comm">initialize</span>
+<span class="var">var</span> <span class="n">carousel</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s">&#39;#container&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">responsiveCarousel</span><span class="p">({</span>
+    <span class="n">direction</span><span class="p">:</span> <span class="s">&#39;horizontal&#39;</span><span class="p">,</span>
+    <span class="n">transitionSpeed</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span><!--
+     <span class="n">keyControl</span><span class="p">:</span> <span class="val">true</span><span class="p">,</span>
+    <span class="n">arrows</span><span class="p">:</span> <span class="val">true</span><span class="p">,</span> -->
+    <span class="n">pagination</span><span class="p">:</span> <span class="val">true</span><span class="p">,</span>
+    <span class="n">paginationEl</span><span class="p">:</span> <span class="s">&#39;paginationList&#39;</span><span class="p">,</span>
+    <span class="n">tapToReturn</span><span class="p">:</span> <span class="val">true</span><span class="p">,</span>
+    <span class="n">callback</span><span class="p">:</span> <span class="func">function</span><span class="p">()</span>
+        <span class="n">console</span><span class="o">.</span><span class="func">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">state</span><span class="p">);</span>
+     <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
             </div>
           </section>
         </li>

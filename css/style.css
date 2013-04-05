@@ -414,11 +414,18 @@ body, html, #wrapper {
   background-color: #444444;
 }
 #howto {
-  height: 800px;
-  margin-top: -400px;
-  padding-top: 40px;
+  height: 500px;
+  margin-top: -250px;
   text-align: center;
   white-space: normal;
+}
+#how-to-header {
+  margin-top: -40px;
+  margin-bottom: 0;
+  color: white;
+  font-family: "futura-pt",sans-serif;
+  font-size: 40px;
+  font-weight: 700;
 }
 #howto .slide-head {
   font-size: 30px;
@@ -438,7 +445,7 @@ body, html, #wrapper {
   display: inline-block;
   width: 100%;
   height: auto;
-  padding: 20px 40px;
+  padding: 0 40px;
   margin: 0 auto;
   float: left;
   padding-left: 0;
@@ -448,15 +455,25 @@ body, html, #wrapper {
   color: #eeeeee;
 }
 .code {
+  background-color: #393939;
+  border-radius: 7px;
   text-align: left;
   font-family: helvetica neue;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 19px;
   color: #dddddd;
-  padding: 20px 30px;
+  padding: 40px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+pre {
   width: 600px;
   margin: 0 auto;
+  font-family: courier, monospace;
+  font-weight: 500;
+  text-align: left;
 }
-
 #four {
   background-color: white;
 }
@@ -552,3 +569,28 @@ footer ul li.rcPaginationHot {
     margin: 0 6px;
   }
 }
+/* code snippets */
+.comm {
+  color: rgb(79, 213, 138);
+}
+.n, .el {
+  color: #eeeeee;
+}
+.err, .el {
+  color: #f62d73;
+}
+.s { /* yello */
+  color: #e5d878
+}
+.val, .mi, .attr {
+  color: #ad85fc; /* purple */
+}
+.var, .func { /* light blue */
+  color: #6be9ed;
+}
+.p {
+  color: #bbbbbb;
+}
+
+
+
