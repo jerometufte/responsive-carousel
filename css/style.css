@@ -255,20 +255,20 @@ figure {
 }
 .icon-responsive {
   background-image: url('./../img/responsive-icons.png');
-  background-size: 420px 140px;
-  height: 140px;
-  width: 140px;
+  background-size: 360px 120px;
+  height: 120px;
+  width: 120px;
   margin: 0 6px;
   display: inline-block;
 }
 .icon-touch {
-  background-position: -280px 0;
+  background-position: -240px 0;
 }
 .icon-keyboard {
   background-position: 0 0;
 }
 .icon-mouse {
-  background-position: -140px 0;
+  background-position: -120px 0;
 }
 .icon-swipe {
 
@@ -395,7 +395,7 @@ body, html, #wrapper {
   text-align: center;
 }
 #description .slide-head {
-  margin: 20px auto;
+  margin: 0 auto 30px auto;
   font-size: 40px;
   font-weight: 700;
   color: #555555;
@@ -403,10 +403,10 @@ body, html, #wrapper {
 #description .description {
   font-family: "ff-din-web", helvetica neue, sans-serif;
   font-size: 17px;
-  line-height: 27px;
+  line-height: 30px;
   font-weight: 400;
   color: #777777;
-  max-width: 540px;
+  max-width: 590px;
   white-space: normal;
   margin: 0 auto;
 }
