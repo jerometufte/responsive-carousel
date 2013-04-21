@@ -258,7 +258,7 @@ figure {
   background-size: 360px 120px;
   height: 120px;
   width: 120px;
-  margin: 0 6px;
+  margin: 0 2px;
   display: inline-block;
 }
 .icon-touch {
@@ -392,12 +392,19 @@ body, html, #wrapper {
   height: 420px;
   margin-top: -210px;
   text-align: center;
+  line-height: 0;
+}
+#description-icons {
+  width: 100%;
 }
 #description .slide-head {
-  margin: 0 auto 30px auto;
+  margin: 35px auto 30px auto;
   font-size: 40px;
+  line-height: 50px;
   font-weight: 700;
   color: #555555;
+  display: inline-block;
+  vertical-align: top;
 }
 #description .description {
   font-family: "ff-din-web", helvetica neue, sans-serif;
@@ -408,6 +415,7 @@ body, html, #wrapper {
   max-width: 590px;
   white-space: normal;
   margin: 0 auto;
+  vertical-align:top;
 }
 #three {
   background-color: #222222;
@@ -453,7 +461,6 @@ body, html, #wrapper {
   color: #eeeeee;
 }
 .code {
-  background-color: #303030;
   text-align: left;
   font-family: helvetica neue;
   font-size: 16px;
@@ -475,8 +482,8 @@ pre {
   background-color: #dddddd;
 }
 #examples {
-  height: 600px;
-  margin-top: -300px;
+  height: 400px;
+  margin-top: -230px;
 }
 #examples .slide-head {
   display: inline-block;
@@ -493,7 +500,7 @@ pre {
 }
 #examples .examples-list li {
   display: block;
-  height: 70px;
+  height: 60px;
   font-size: 18px;
   color: #888888;
 }
@@ -507,6 +514,26 @@ pre {
 /* by me */
 #five {
   background-color: rgb(79, 213, 138);
+}
+#me {
+  color: white;
+  height: 200px;
+  margin-top: -130px;
+  line-height: 0;
+}
+
+#five .me-by {
+  font-size: 30px;
+  line-height: 80px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+#five .slide-head {
+  font-size: 80px;
+  line-height: 100px;
+  font-weight: 700;
+  margin: 0 auto;
 }
 
 #six {
