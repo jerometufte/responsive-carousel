@@ -365,7 +365,6 @@ body, html, #wrapper {
 }
 #one {
   background-color: rgb(79, 213, 138);
-  z-index: 1001;
 }
 #main-intro {
   margin-top: -200px;
@@ -411,11 +410,11 @@ body, html, #wrapper {
   margin: 0 auto;
 }
 #three {
-  background-color: #444444;
+  background-color: #222222;
 }
 #howto {
   height: 500px;
-  margin-top: -250px;
+  margin-top: -280px;
   text-align: center;
   white-space: normal;
 }
@@ -454,15 +453,14 @@ body, html, #wrapper {
   color: #eeeeee;
 }
 .code {
-  background-color: #393939;
-  border-radius: 7px;
+  background-color: #303030;
   text-align: left;
   font-family: helvetica neue;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 21px;
   color: #dddddd;
-  padding: 40px;
-  width: 600px;
+  padding: 50px 80px;
+  width: 540px;
   margin: 0 auto;
   text-align: center;
 }
@@ -474,7 +472,7 @@ pre {
   text-align: left;
 }
 #four {
-  background-color: white;
+  background-color: #dddddd;
 }
 #examples {
   height: 600px;
@@ -491,11 +489,23 @@ pre {
 }
 #examples .examples-list li {
   display: block;
-  height: 60px;
-  font-size: 26px;
+  height: 80px;
+  font-size: 18px;
+  color: #888888;
+}
+.example a {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  padding-right: 15px;
+  border-raidus: 50px;
+}
+/* by me */
+#five {
+  background-color: rgb(79, 213, 138);
 }
 
-#five {
+#six {
   background-image: url('./../img/buffalo2.jpg');
   background-size: cover;
   background-position: 100% 50%;
