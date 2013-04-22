@@ -20,7 +20,7 @@ You may pass an object literal containing config options as an argument.
 - callback: define a function to be called on every page change event, the scope of that function will have access to the pagination object and it's state etc...
 
 #### Arrows
-If you use arrows the plugin will add class `.rcHid` to the left/top arrow on the first page, and to the right/bottom arrow on the last page. The class is changed on page change. This can allow you to hide the arrow if wanted with css.
+First looks to see if you've added two elements with class '.rcL' and '.rcR', and adds if needed. These will control the pagination. The plugin will also add class `.rcHide` to the left/top arrow on the first page, and to the right/bottom arrow on the last page. The class is changed on page change. This can allow you to hide the arrow if wanted with css.
 
 #### Pagination
 If you use pagination, the plugin will add class `rcPaginationHot` to the current pagination list element on page change. This allows you to style the current page in the list with css.
