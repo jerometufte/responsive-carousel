@@ -415,8 +415,11 @@
 
     initArrows: function() {
       // build arrows, prepend and append to $el, siblings of rcWrapper
-      that.$leftArrow = $('<div/>').addClass('rcL').addClass('rcHide').prependTo(that.$el);
-      that.$rightArrow = $('<div/>').addClass('rcR').addClass('rcHide').appendTo(that.$el);
+      // first look to see if user has already added arrows before building
+      var $leftArrow = that.$el.find('.rcL');
+      var $rightArrow = that.$el.find('.rcR');
+      that.$leftArrow = $leftArrow.length ? $leftArrow : $('<div/>').addClass('rcL').addClass('rcHide').prependTo(that.$el);
+      that.$rightArrow = $rightArrow.length ? $rightArrow : $('<div/>').addClass('rcR').addClass('rcHide').appendTo(that.$el);
 
       // add listeners for the function that looks for page and animates if possible
       that.$leftArrow.on('click', that.ifPrev);
